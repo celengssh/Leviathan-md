@@ -545,7 +545,7 @@ module.exports = {
                                 console.error(e)
                             }
                         }
-                        if (m.limit) m.reply(+ m.limit + ' Limit terpakai')
+                        //if (m.limit) m.reply(+ m.limit + ' Limit terpakai')
                         //jika risih matiin aja 
                     }
                     break
@@ -610,15 +610,15 @@ module.exports = {
                 if (chat.welcome) {
                     let groupMetadata = await this.groupMetadata(id) || (conn.chats[id] || {}).metadata
                     for (let user of participants) {
-                        let pp = 'https://telegra.ph/file/2d06f0936842064f6b3bb.png'
+                        //let pp = 'https://telegra.ph/file/2d06f0936842064f6b3bb.png'
                         try {
-                            pp = await this.profilePictureUrl(user, 'image')
+                            //pp = await this.profilePictureUrl(user, 'image')
                         } catch (e) {
 
                         } finally {
                             text = (action === 'add' ? (chat.sWelcome || this.welcome || conn.welcome || 'Welcome, @user!').replace('@subject', await this.getName(id)).replace('@desc', groupMetadata.desc ? String.fromCharCode(8206).repeat(4001) + groupMetadata.desc : '') :
                                 (chat.sBye || this.bye || conn.bye || 'Bye, @user!')).replace(/@user/g, '@' + user.split`@`[0])
-                            let wel = API('hardianto', '/api/welcome3', {
+                            /*let wel = API('hardianto', '/api/welcome3', {
                                 profile: pp,
                                 name: await this.getName(user),
                                 bg: 'https://telegra.ph/file/0c7614657950e02908209.jpg',
@@ -631,7 +631,7 @@ module.exports = {
                                 bg: 'https://telegra.ph/file/0c7614657950e02908209.jpg',
                                 namegb: await this.getName(id),
                                 member: groupMetadata.participants.length
-                            })
+                            })*/
                             /*await this.send3TemplateButtonImg(id, action === 'add' ? wel : lea, text, wm, action === 'add' ? 'selamat datang' : 'sampai jumpa', action === 'add' ? '.intro' : 'FokusID')*/
    await conn.sendButtonDoc(id, text, wm, action == 'add' ? 'selamat datang' : 'sampai jumpa', action === 'add' ? '.intro' : 'the.sad.boy01', fake,{
   contextInfo: { externalAdReply :{
@@ -716,8 +716,8 @@ Untuk mematikan fitur ini, ketik
 
  global.dfail = async (type, m, conn) => {
     let msg = {
-        rowner: 'Perintah ini hanya dapat digunakan oleh _*Team Bot Discussion!1!1!*_',
-        owner: 'Perintah ini hanya dapat digunakan oleh _*Team Bot Discussion!1!1!*_',
+        rowner: 'Perintah ini hanya dapat digunakan oleh _*owner*_',
+        owner: 'Perintah ini hanya dapat digunakan oleh _*owner*_',
         mods: 'Perintah ini hanya dapat digunakan oleh *Moderator*',
         premium: 'Perintah ini hanya untuk member _*Premium*_ !',
         group: 'Perintah ini hanya dapat digunakan di grup!',
@@ -741,8 +741,8 @@ Untuk mematikan fitur ini, ketik
     description: data.deslink, 
     title: run,
     body: wm,
-    thumbnail: await(await fetch(img)).buffer(),
-    sourceUrl: data.sc
+    //thumbnail: await(await fetch(img)).buffer(),
+    //sourceUrl: data.sc
      }}
   })
 }
